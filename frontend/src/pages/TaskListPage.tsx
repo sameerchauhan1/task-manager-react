@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { motion, AnimatePresence } from "framer-motion";
 
-const API_BASE_URL = "http://localhost:5000/api";
 
 interface Task {
    id: number;
@@ -22,7 +21,7 @@ const TaskListPage: React.FC = () => {
 
    const fetchTasks = async () => {
       try {
-         const response = await axios.get(`${API_BASE_URL}/tasks`);
+         const response = await axios.get(`${import.meta.env.API_BASE_URL}/tasks`);
          setTasks(response.data);
       } catch (error) {
          console.error("Error fetching tasks:", error);
@@ -31,7 +30,7 @@ const TaskListPage: React.FC = () => {
 
    const deleteTask = async (id: number) => {
       try {
-         await axios.delete(`${API_BASE_URL}/tasks/${id}`);
+         await axios.delete(`${import.meta.env.API_BASE_URL}/tasks/${id}`);
          setTasks(tasks.filter((task) => task.id !== id));
       } catch (error) {
          console.error("Error deleting task:", error);
@@ -40,10 +39,13 @@ const TaskListPage: React.FC = () => {
 
    const toggleComplete = async (task: Task) => {
       try {
-         const response = await axios.put(`${API_BASE_URL}/tasks/${task.id}`, {
-            ...task,
-            completed: !task.completed,
-         });
+         const response = await axios.put(
+            `${import.meta.env.API_BASE_URL}/tasks/${task.id}`,
+            {
+               ...task,
+               completed: !task.completed,
+            }
+         );
          setTasks(tasks.map((t) => (t.id === task.id ? response.data : t)));
       } catch (error) {
          console.error("Error updating task:", error);
@@ -52,10 +54,13 @@ const TaskListPage: React.FC = () => {
 
    const updatePriority = async (task: Task, priority: number) => {
       try {
-         const response = await axios.put(`${API_BASE_URL}/tasks/${task.id}`, {
-            ...task,
-            priority,
-         });
+         const response = await axios.put(
+            `${import.meta.env.API_BASE_URL}/tasks/${task.id}`,
+            {
+               ...task,
+               priority,
+            }
+         );
          setTasks(tasks.map((t) => (t.id === task.id ? response.data : t)));
       } catch (error) {
          console.error("Error updating task priority:", error);
@@ -65,7 +70,7 @@ const TaskListPage: React.FC = () => {
    const searchTasks = async () => {
       try {
          const response = await axios.get(
-            `${API_BASE_URL}/tasks/search?query=${searchQuery}`
+            `${import.meta.env.API_BASE_URL}/tasks/search?query=${searchQuery}`
          );
          setTasks(response.data);
       } catch (error) {
