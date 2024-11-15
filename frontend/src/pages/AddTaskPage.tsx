@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-
+import { API_BASE_URL } from "../config";
 
 const AddTaskPage: React.FC = () => {
    const [newTask, setNewTask] = useState("");
@@ -10,7 +10,7 @@ const AddTaskPage: React.FC = () => {
    const addTask = async () => {
       if (!newTask.trim()) return;
       try {
-         await axios.post(`${import.meta.env.API_BASE_URL}/tasks`, {
+         await axios.post(`${API_BASE_URL}/tasks`, {
             title: newTask,
             priority,
          });

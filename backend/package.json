@@ -15,7 +15,8 @@
       "@prisma/client": "^5.22.0",
       "cors": "^2.8.5",
       "express": "^4.21.1",
-      "prisma": "^5.22.0"
+      "prisma": "^5.22.0",
+      "vercel": "^39.0.2"
    },
    "devDependencies": {
       "nodemon": "^3.1.7"

@@ -14,6 +14,14 @@ app.use((req, res, next) => {
    next();
 });
 
+
+//Test
+app.get("/", (req, res) => {
+   res.send("Hello World");
+});
+
+
+
 // Create a new task
 app.post("/api/tasks", async (req, res) => {
    const { title, priority } = req.body;
