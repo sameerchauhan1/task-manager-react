@@ -1,6 +1,8 @@
-# Task Manager Application with React
+# Task Manager Application with React 
 
 This project is a MERN application that performs CRUD (Create, Read, Update, Delete) operations on a Postgres database. It provides a REST API with endpoints accessible via HTTP requests.
+
+Live link: https://task-manager-ashen-six.vercel.app/tasks
 
 ## Getting Started
 
