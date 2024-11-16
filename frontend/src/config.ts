@@ -1,1 +1,1 @@
-export const API_BASE_URL = "http://localhost:5000/api";
+export const API_BASE_URL = "https://task-manager-react-u5k1.onrender.com/api";
